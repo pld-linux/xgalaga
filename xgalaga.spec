@@ -40,14 +40,13 @@ install -d $RPM_BUILD_ROOT/var/games
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 touch $RPM_BUILD_ROOT/var/games/xgalaga.score
 
-gzip -9nf README CHANGES
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc README CHANGES
 %attr(2755,root,games) %{_exec_prefix}/*
 %{_prefix}
 %attr(664,root,games) /var/games/xgalaga.score
