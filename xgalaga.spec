@@ -5,7 +5,8 @@ Version:	2.0
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
-Source0:	http://www.ibiblio.org/pub/X11/contrib/games/%{name}-%{version}.tar.gz
+Source0:	http://www.mit.edu/afs/athena/contrib/games/src/%{name}-%{version}.tar.gz
+# Source0-md5:	ffc1d86b0757a57d23d1cc971014cc43
 Patch0:		%{name}-compile.patch
 Patch1:		%{name}-DESTDIR.patch
 Patch2:		%{name}-score.patch
