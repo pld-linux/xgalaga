@@ -1,0 +1,15 @@
+diff -Naur xgalaga-2.0.orig/highscore.c xgalaga-2.0/highscore.c
+--- xgalaga-2.0.orig/highscore.c	Sun Mar 17 16:23:34 2002
++++ xgalaga-2.0/highscore.c	Sun Mar 17 21:15:18 2002
+@@ -4,6 +4,11 @@
+ 
+ #include <config.h>
+ 
++#ifdef SCOREFILE
++#undef SCOREFILE
++#endif
++#define SCOREFILE "/var/games/xgalaga.score"
++
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <sys/types.h>

@@ -1,0 +1,40 @@
+diff -Naur xgalaga-2.0.orig/Makefile.in xgalaga-2.0/Makefile.in
+--- xgalaga-2.0.orig/Makefile.in	Sun Mar 17 16:23:33 2002
++++ xgalaga-2.0/Makefile.in	Sun Mar 17 21:17:01 2002
+@@ -20,7 +20,7 @@
+ SOUNDOBJS = @SOUNDSERVER@.o
+ SOUNDSRCS = @SOUNDSERVER@.c
+ 
+-SOUNDDEFS = -DSOUNDSERVER=\"@prefix@/@SOUNDSERVER@\"
++SOUNDDEFS = -DSOUNDSERVER=\"@exec_prefix@/@SOUNDSERVER@\"
+ 
+ RM = rm -f
+ CC = @CC@
+@@ -43,13 +43,13 @@
+ 	$(CC) $(LDFLAGS) -o $(SOUNDSRV) $(SOUNDOBJS) $(SOUNDLIBS)
+ 
+ install: all
+-	mkinstalldirs $(bindir)
+-	$(INSTALL) $(TARGET) $(bindir)/$(TARGET)
+-	$(INSTALL) $(SOUNDSRV) $(prefix)/$(SOUNDSRV)
+-	mkinstalldirs $(prefix)/sounds
+-	mkinstalldirs $(prefix)/levels
+-	for i in levels/*.xgl; do $(INSTALL) $$i $(prefix)/$$i ; done
+-	for i in sounds/*.raw; do $(INSTALL) $$i $(prefix)/$$i ; done
++	./mkinstalldirs $(DESTDIR)/$(bindir)
++	$(INSTALL) $(TARGET) $(DESTDIR)/$(bindir)/$(TARGET)
++	$(INSTALL) $(SOUNDSRV) $(DESTDIR)/$(bindir)/$(SOUNDSRV)
++	./mkinstalldirs $(DESTDIR)/$(prefix)/sounds
++	./mkinstalldirs $(DESTDIR)/$(prefix)/levels
++	for i in levels/*.xgl; do $(INSTALL) $$i $(DESTDIR)/$(prefix)/$$i ; done
++	for i in sounds/*.raw; do $(INSTALL) $$i $(DESTDIR)/$(prefix)/$$i ; done
+ 
+ subdirs:
+ 	for i in $(SUBDIRS); do cd $$i ; make ; done
+@@ -75,4 +75,4 @@
+ 	cd libsprite;$(MAKE) distclean
+ 
+ depend:
+-	makedepend $(CFLAGS) $(SRCS)
+\ No newline at end of file
++	makedepend $(CFLAGS) $(SRCS)
