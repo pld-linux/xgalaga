@@ -1,5 +1,5 @@
 Summary:	Xgalaga is a clone of the famous classic arcade game
-Summary(pl.UTF-8):   Xgalaga to klon bardzo popularnej gry
+Summary(pl.UTF-8):	Xgalaga to klon bardzo popularnej gry
 Name:		xgalaga
 Version:	2.0
 Release:	1
