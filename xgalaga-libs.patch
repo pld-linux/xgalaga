@@ -1,0 +1,11 @@
+--- xgalaga-2.0.34/Makefile.in.old	2007-12-23 18:28:03.000000000 +0100
++++ xgalaga-2.0.34/Makefile.in	2007-12-23 18:28:22.000000000 +0100
+@@ -26,7 +26,7 @@ RM = rm -f
+ CC = @CC@
+ CFLAGS = -I. @CFLAGS@ @DEFS@ @X_CFLAGS@ -DXGALAGADIR=\"@prefix@/\" $(SOUNDDEFS)
+ LDFLAGS = @LDFLAGS@
+-LIBS = @LIBS@ libsprite/libsprite.a @X_LIBS@
++LIBS = libsprite/libsprite.a @LIBS@ @X_LIBS@
+ INSTALL = @INSTALL@
+ 
+ OBJS = main.o images.o data.o paths.o pathfile.o title.o explosions.o \
