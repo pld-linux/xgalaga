@@ -10,18 +10,22 @@ diff -Naur xgalaga-2.0.orig/Makefile.in xgalaga-2.0/Makefile.in
  
  RM = rm -f
  CC = @CC@
-@@ -43,13 +43,13 @@
+@@ -43,16 +43,14 @@
  	$(CC) $(LDFLAGS) -o $(SOUNDSRV) $(SOUNDOBJS) $(SOUNDLIBS)
  
  install: all
--	mkinstalldirs $(bindir)
+-	./mkinstalldirs $(bindir)
+-	./mkinstalldirs $(prefix)
 -	$(INSTALL) $(TARGET) $(bindir)/$(TARGET)
 -	$(INSTALL) $(SOUNDSRV) $(prefix)/$(SOUNDSRV)
--	mkinstalldirs $(prefix)/sounds
--	mkinstalldirs $(prefix)/levels
+-	./mkinstalldirs $(prefix)/sounds
+-	./mkinstalldirs $(prefix)/levels
 -	for i in levels/*.xgl; do $(INSTALL) $$i $(prefix)/$$i ; done
 -	for i in sounds/*.raw; do $(INSTALL) $$i $(prefix)/$$i ; done
+-	touch $(prefix)/scores
+-	chmod 666 $(prefix)/scores
 +	./mkinstalldirs $(DESTDIR)/$(bindir)
++	./mkinstalldirs $(DESTDIR)/$(prefix)
 +	$(INSTALL) $(TARGET) $(DESTDIR)/$(bindir)/$(TARGET)
 +	$(INSTALL) $(SOUNDSRV) $(DESTDIR)/$(bindir)/$(SOUNDSRV)
 +	./mkinstalldirs $(DESTDIR)/$(prefix)/sounds
