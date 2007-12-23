@@ -1,20 +1,24 @@
 Summary:	Xgalaga is a clone of the famous classic arcade game
 Summary(pl.UTF-8):	Xgalaga to klon bardzo popularnej gry
 Name:		xgalaga
-Version:	2.0
+Version:	2.0.34
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
-Source0:	http://www.mit.edu/afs/athena/contrib/games/src/%{name}-%{version}.tar.gz
-# Source0-md5:	ffc1d86b0757a57d23d1cc971014cc43
+Source0:	http://dl.sourceforge.net/xgalaga/%{name}_%{version}.orig.tar.gz
+# Source0-md5:	9f7ee685e9c4741b5f0edc3f91df9510
 Patch0:		%{name}-compile.patch
 Patch1:		%{name}-DESTDIR.patch
 Patch2:		%{name}-score.patch
-BuildRequires:	XFree86-devel
+Patch3:		%{name}-struct.patch
+Patch4:		%{name}-libs.patch
+BuildRequires:	automake
+BuildRequires:	xorg-lib-libXmu-devel
+BuildRequires:	xorg-lib-libXpm-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6/share/xgalaga
-%define		_exec_prefix	/usr/X11R6/bin
+%define		_prefix		/usr/share/xgalaga
+%define		_exec_prefix	/usr/bin
 
 %description
 Xgalaga is a clone of the famous classic arcade game. Excellent
@@ -30,9 +34,13 @@ wspaniałych efektów specjalnych.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
 
 %build
+cp -f /usr/share/automake/config.sub .
 %configure2_13
+
 %{__make}
 
 %install
@@ -50,5 +58,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README CHANGES
 %attr(2755,root,games) %{_exec_prefix}/*
-%{_prefix}
+%dir %{_prefix}
+%{_prefix}/*
 %attr(664,root,games) /var/games/xgalaga.score
