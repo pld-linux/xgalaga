@@ -12,6 +12,7 @@ Patch1:		%{name}-DESTDIR.patch
 Patch2:		%{name}-score.patch
 Patch3:		%{name}-struct.patch
 Patch4:		%{name}-libs.patch
+URL:		http://rumsey.org/xgal.html
 BuildRequires:	automake
 BuildRequires:	xorg-lib-libXmu-devel
 BuildRequires:	xorg-lib-libXpm-devel
